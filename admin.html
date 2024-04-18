@@ -1,63 +1,178 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leave Approval</title>
+    <title>Document</title>
     <style>
-      .content {
+      body {
         font-family: "Arial", sans-serif;
-        background: linear-gradient(to right, #8e44ad, #3498db);
+        /* background: #fffefec9; */
         color: #ffffff;
-        margin: 0;
+      }
+
+      .formstart {
+        font-family: "Arial", sans-serif;
+        /* background: linear-gradient(to right, #8e44ad, #3498db); */
+        color: #ffffff;
         display: flex;
-        flex-direction: column;
+        /* flex-direction: column; */
         justify-content: center;
         align-items: center;
+
+        margin: 30px auto;
+        background: transparent;
+        /* box-shadow: 0px 8px 28px -9px rgba(0,0,0,0.45); */
+        position: relative;
+        width: 1000px;
+        /* height: 800px; */
+        height: auto;
+        border-radius: 16px;
+        overflow: hidden;
       }
-      body {
-        background: linear-gradient(to right, #8e44ad, #3498db);
+
+      h1 {
+        position: relative;
+        margin: auto;
+        display: block;
+        text-align: center;
+        margin-left: 150px;
       }
+      /* anushka */
+
+      .wave {
+        z-index: -10;
+        position: absolute;
+        width: 1400px;
+        height: 1800px;
+        opacity: 0.6;
+        left: 0;
+        top: 0;
+        margin-left: -50%;
+        margin-top: -70%;
+        background: linear-gradient(#af40ff, #5b42f3 20%, #00ddeb);
+      }
+
+      .infotop {
+        text-align: center;
+        font-size: 16px;
+        position: absolute;
+        top: 5.6em;
+        left: 0;
+        right: 0;
+        color: rgb(255, 255, 255);
+        font-weight: 600;
+      }
+
+      .name {
+        font-size: 14px;
+        font-weight: 100;
+        position: relative;
+        top: 1em;
+        text-transform: lowercase;
+      }
+
+      .wave:nth-child(2),
+      .wave:nth-child(3) {
+        top: 210px;
+      }
+
+      .playing .wave {
+        border-radius: 40%;
+        animation: wave 3000ms infinite linear;
+      }
+
+      .wave {
+        border-radius: 40%;
+        animation: wave 55s infinite linear;
+      }
+
+      .playing .wave:nth-child(2) {
+        animation-duration: 4000ms;
+      }
+
+      .wave:nth-child(2) {
+        animation-duration: 50s;
+      }
+
+      .playing .wave:nth-child(3) {
+        animation-duration: 5000ms;
+      }
+
+      .wave:nth-child(3) {
+        animation-duration: 45s;
+      }
+
+      @keyframes wave {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      */ .last {
+        font-family: "Arial", sans-serif;
+        /* background: linear-gradient(to right, #8e44ad, #3498db); */
+        color: #fffdfd;
+        margin-top: 100px;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .leave {
+        position: relative;
+        margin: auto;
+        display: block;
+        text-align: center;
+      }
+
+      form {
+        width: 100%;
+        max-width: 600px;
+        /* background-color: #1f1f1f1e; */
+        padding: 40px;
+        border-radius: 10px;
+        /* box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); */
+        margin-bottom: 30px;
+        margin-right: 180px;
+      }
+
+      .data-info button {
+        background-color: #e19bda;
+        color: #000000;
+        padding: 6px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-left: 5px; /* Adjust spacing between buttons */
+      }
+
+      .data-info button:hover {
+        background-color: #c7c5c7;
+      }
+
+      .data-info input {
+        margin-right: 10px;
+      }
+
       .data-info {
         margin-top: 10px;
         padding: 10px;
-        background-color: #000000;
+        background-color: #00000000;
         border-radius: 5px;
+        border: 2px solid #444;
+        border-color: #0000007c;
         box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
         display: flex;
         justify-content: space-between;
         align-items: center;
         color: white;
         border-radius: 20px;
-        width: 100%;
-      }
-
-      .data-info p {
-        margin: 0;
-        padding-right: 10px;
-      }
-
-      .data-info .buttons-container {
-        display: flex;
-        align-items: center;
-      }
-
-      .data-info button {
-        background-color: #8e44ad;
-        color: #fff;
-        padding: 5px;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        margin-left: 5px;
-      }
-
-      .data-info button:hover {
-        background-color: #6c3483;
-      }
-
-      .data-info input {
-        margin-right: 10px;
+        width: 130%; /* Adjust width as needed */
       }
     </style>
 
@@ -228,144 +343,159 @@
         </div>
       </nav>
     </section>
-    <div class="content">
-      <button class="navigate-btn" onclick="addemployee()">
-        add new employee
-      </button>
+    <div class="formstart">
+      <form id="leaveForm">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
 
-      <h1>Leave Approval</h1>
+        <h1>Leave Approval</h1>
 
-      <div id="dataList"></div>
+        <div id="dataList"></div>
 
-      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
 
-      <script>
-        function addemployee() {
-          window.location.href = "addemployee.html";
-        }
-        // document.oncontextmenu = (e) => {
-        //   return false;
-        // };
-        // document.onkeydown = (e) => {
-        //   if (e.key == "F12") {
-        //     return false;
-        //   }
+        <script>
+          // document.oncontextmenu = (e) => {
+          //   return false;
+          // };
+          // document.onkeydown = (e) => {
+          //   if (e.key == "F12") {
+          //     return false;
+          //   }
 
-        //   if (e.ctrlKey && e.key == "u") {
-        //     return false;
-        //   }
-        // };
-        // Your Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyD13AT05cO3QBTO_e7Qh00pPcVuzHQE2ak",
-          authDomain: "test2-5bbcd.firebaseapp.com",
-          projectId: "test2-5bbcd",
-          storageBucket: "test2-5bbcd.appspot.com",
-          messagingSenderId: "825583645874",
-          appId: "1:825583645874:web:e4b30f5090b5cefeb885ab",
-          measurementId: "G-B3HKML6191",
-        };
+          //   if (e.ctrlKey && e.key == "u") {
+          //     return false;
+          //   }
+          // };
+          // Your Firebase configuration
+          const firebaseConfig = {
+            apiKey: "AIzaSyD13AT05cO3QBTO_e7Qh00pPcVuzHQE2ak",
+            authDomain: "test2-5bbcd.firebaseapp.com",
+            projectId: "test2-5bbcd",
+            storageBucket: "test2-5bbcd.appspot.com",
+            messagingSenderId: "825583645874",
+            appId: "1:825583645874:web:e4b30f5090b5cefeb885ab",
+            measurementId: "G-B3HKML6191",
+          };
 
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          const database = firebase.database();
 
-        fetchAllData();
+          // Function to fetch all data from Firebase
 
-        function fetchAllData() {
-          const dataListContainer = document.getElementById("dataList");
+          // Fetch and display all data after form submission
+          fetchAllData();
 
-          database.ref("leaveApplications").on("value", (snapshot) => {
-            const allData = snapshot.val();
-            if (allData) {
-              // Clear previous data
-              dataListContainer.innerHTML = "";
+          // Function to fetch all data from Firebase
+          function fetchAllData() {
+            const dataListContainer = document.getElementById("dataList");
 
-              // Loop through data and display on the page
-              const allDataKeys = Object.keys(allData);
-              for (let i = allDataKeys.length - 1; i >= 0; i--) {
-                const dataId = allDataKeys[i];
-                const leaveApplications = allData[dataId];
-                const dataInfoDiv = document.createElement("div");
-                dataInfoDiv.classList.add("data-info");
+            database.ref("leaveApplications").on("value", (snapshot) => {
+              const allData = snapshot.val();
+              if (allData) {
+                // Clear previous data
+                dataListContainer.innerHTML = "";
 
-                // Display data information
-                dataInfoDiv.innerHTML = `
-      <p><strong>Faculty Name:</strong> ${leaveApplications.facultyName} |
-      <strong>Faculty ID:</strong> ${leaveApplications.facultyUniqueId} |
-      <strong>Start Leave Date:</strong> ${leaveApplications.startLeaveDate} |
-      <input type="checkbox" class="dataCheckbox" ${
-        leaveApplications.status === "Approved" ? "checked" : ""
-      } onchange="updateStatus('${dataId}', this.checked)"> |
-      <button class="deleteButton" onclick="deleteData('${dataId}')">Delete</button> |
+                // Loop through data and display on the page
+                const allDataKeys = Object.keys(allData);
+                for (let i = allDataKeys.length - 1; i >= 0; i--) {
+                  const dataId = allDataKeys[i];
+                  const leaveApplications = allData[dataId];
+                  const dataInfoDiv = document.createElement("div");
+                  dataInfoDiv.classList.add("data-info");
 
-      <button class="downloadButton" onclick="showHTMLContent('${
-        leaveApplications.facultyName
-      }', '${leaveApplications.facultyUniqueId}','${
-                  leaveApplications.startLeaveDate
-                }', '${leaveApplications.endLeaveDate}', '${
-                  leaveApplications.leaveType
-                }','${leaveApplications.reason}','${
-                  leaveApplications.status
-                }')">Download</button></p>
-  `;
+                  // Display data information
+                  dataInfoDiv.innerHTML = `
+              <p><strong>Faculty Name:</strong> ${
+                leaveApplications.facultyName
+              } |
+              <strong>Faculty ID:</strong> ${
+                leaveApplications.facultyUniqueId
+              } |
+              <strong>Start Leave Date:</strong> ${
+                leaveApplications.startLeaveDate
+              } |
+              <input type="checkbox" class="dataCheckbox" ${
+                leaveApplications.status === "Approved" ? "checked" : ""
+              } onchange="updateStatus('${dataId}', this.checked)"> |
+              <button class="deleteButton" onclick="deleteData('${dataId}')">Delete</button> |
+      
+              <button class="downloadButton" onclick="showHTMLContent('${
+                leaveApplications.facultyName
+              }', '${leaveApplications.facultyUniqueId}','${
+                    leaveApplications.startLeaveDate
+                  }', '${leaveApplications.endLeaveDate}', '${
+                    leaveApplications.leaveType
+                  }','${leaveApplications.reason}','${
+                    leaveApplications.status
+                  }')">Download</button></p>
+          `;
 
-                dataListContainer.appendChild(dataInfoDiv);
+                  dataListContainer.appendChild(dataInfoDiv);
+                }
               }
-            }
-          });
-        }
+            });
+          }
 
-        function updateStatus(key, newStatus) {
-          database
-            .ref("leaveApplications")
-            .child(key)
-            .update({ status: newStatus ? "Approved" : "Pending" });
-          console.log(
-            `Status updated to ${
-              newStatus ? "Approved" : "Pending"
-            } for data with key ${key}`
-          );
-        }
+          // Function to update the status in Firebase
+          function updateStatus(key, newStatus) {
+            database
+              .ref("leaveApplications")
+              .child(key)
+              .update({ status: newStatus ? "Approved" : "Pending" });
+            console.log(
+              `Status updated to ${
+                newStatus ? "Approved" : "Pending"
+              } for data with key ${key}`
+            );
+          }
 
-        function deleteData(key) {
-          database.ref("leaveApplications").child(key).remove();
-          console.log(`Data with key ${key} deleted from Firebase!`);
-        }
+          // Function to delete data from Firebase
+          function deleteData(key) {
+            database.ref("leaveApplications").child(key).remove();
+            console.log(`Data with key ${key} deleted from Firebase!`);
+          }
 
-        function showHTMLContent(
-          name,
-          id,
-          start,
-          end,
-          // dep,
-          type,
-          reason,
-          // year,
+          //pdf code
+          function showHTMLContent(
+            name,
+            id,
+            start,
+            end,
+            // dep,
+            type,
+            reason,
+            // year,
 
-          status
-        ) {
-          localStorage.setItem("name", name);
+            status
+          ) {
+            localStorage.setItem("name", name);
 
-          localStorage.setItem("id", id);
-          localStorage.setItem("start", start);
-          localStorage.setItem("end", end);
-          // localStorage.setItem("dep", dep);
+            localStorage.setItem("id", id);
+            localStorage.setItem("start", start);
+            localStorage.setItem("end", end);
+            // localStorage.setItem("dep", dep);
 
-          localStorage.setItem("type", type);
+            localStorage.setItem("type", type);
 
-          localStorage.setItem("reason", reason);
+            localStorage.setItem("reason", reason);
 
-          // localStorage.setItem("year", year);
+            // localStorage.setItem("year", year);
 
-          let s = localStorage.setItem("status", status);
+            let s = localStorage.setItem("status", status);
 
-          let get = localStorage.getItem("name");
+            let get = localStorage.getItem("name");
 
-          window.location.href = "pdfformat.html";
-        }
-      </script>
+            window.location.href = "pdfformat.html";
+          }
+
+          // Open a new window and write the HTML content
+        </script>
+      </form>
     </div>
   </body>
 </html>
