@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      .content {
+        font-family: "Arial", sans-serif;
+        /* background: linear-gradient(to right, #8e44ad, #3498db); */
+        background: linear-gradient(#af40ff, #5b42f3 20%, #00ddeb);
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      input {
+        width: 200px;
+        padding: 10px;
+        margin-bottom: 16px;
+        border: 1px solid #444;
+        border-radius: 5px;
+        background-color: #33333300;
+        color: #fff;
+      }
+
+      button {
+        background-color: #e19bda;
+        color: black;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #c7c5c7;
+      }
+
+      #dataList {
+        margin-top: 20px;
+      }
+
+      .data-info {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #1f1f1f;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%; /* Adjust the width as needed */
+      }
+
+      .data-info p {
+        margin: 0;
+        padding-right: 10px;
+      }
+
+      .status-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .status-approved {
+        background-color: green;
+      }
+
+      .status-pending {
+        background-color: yellow;
+      }
+
+      .data-info input {
+        margin-right: 10px;
+      }
+
+      .data-info button {
+        background-color: #8e44ad;
+        color: #fff;
+        padding: 5px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .data-info button:hover {
+        background-color: #6c3483;
+      }
+    </style>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      nav {
+        display: flex;
+        background: rgb(40, 40, 40);
+        height: 60px;
+        align-items: center;
+        justify-content: space-between;
+        color: aliceblue;
+        /* border: 2px solid red; */
+        /* padding: 0px 50px 0px 100px; */
+      }
+
+      .logo {
+        padding-left: 3%;
+      }
+
+      .ul {
+        display: flex;
+
+        /* border: 2px solid red; */
+      }
+
+      .logo {
+        font-weight: 700;
+        /* border: 2px solid red; */
+      }
+
+      .li {
+        margin: 15px;
+        padding: 5px;
+        border-radius: 15px;
+
+        /* border: 2px solid red; */
+      }
+
+      a {
+        margin: 10px;
+        padding: 5px;
+        color: #8e44ad;
+
+        /* border: 2px solid red; */
+      }
+
+      .li:hover,
+      .active {
+        color: rgb(40, 40, 40);
+        background-color: aliceblue;
+        transition: 0.7s;
+
+        /* width: 100px; */
+      }
+
+      .menu {
+        display: none;
+      }
+
+      #click {
+        display: none;
+      }
+
+      .bar {
+        height: 2px;
+        width: 20px;
+        margin: 5px;
+        background-color: aliceblue;
+      }
+
+      @media (max-width: 940px) {
+        nav {
+          display: flex;
+          background: rgb(40, 40, 40);
+          height: 60px;
+
+          justify-content: space-between;
+          color: aliceblue;
+          /* border: 2px solid red; */
+          /* padding: 10px 40px; */
+        }
+
+        .ul {
+          display: block;
+          flex-direction: column;
+          background: rgb(40, 40, 40);
+          position: fixed;
+          top: 50px;
+          height: 100vh;
+          width: 100%;
+
+          margin: 0px;
+          right: -100%;
+
+          transition: 0.7s;
+        }
+
+        .menu {
+          display: block;
+        }
+
+        .bar {
+          height: 2px;
+          width: 20px;
+          margin: 3px;
+          background-color: rgb(255, 255, 255);
+        }
+
+        .li {
+          text-align: center;
+          margin: 30px 70px;
+
+          /* align-items: center; */
+        }
+
+        .check {
+          margin-left: 65%;
+        }
+
+        .logo {
+          margin-right: 0%;
+        }
+
+        #click:checked ~ .un .ul {
+          right: 0%;
+
+          /* transition: 0.7s; */
+        }
+
+        #click:checked ~ .check.menu :before {
+          content: "\f00d";
+        }
+      }
+    </style>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      nav {
+        display: flex;
+        background: rgb(40, 40, 40);
+        height: 60px;
+        align-items: center;
+        justify-content: space-between;
+        color: aliceblue;
+        /* border: 2px solid red; */
+        /* padding: 0px 50px 0px 100px; */
+      }
+
+      .logo {
+        padding-left: 3%;
+      }
+
+      .ul {
+        display: flex;
+
+        /* border: 2px solid red; */
+      }
+
+      .logo {
+        font-weight: 700;
+        /* border: 2px solid red; */
+      }
+
+      .li {
+        margin: 15px;
+        padding: 5px;
+        border-radius: 15px;
+
+        /* border: 2px solid red; */
+      }
+
+      a {
+        margin: 10px;
+        padding: 5px;
+        color: #8e44ad;
+
+        /* border: 2px solid red; */
+      }
+
+      .li:hover,
+      .active {
+        color: rgb(40, 40, 40);
+        background-color: aliceblue;
+        transition: 0.7s;
+
+        /* width: 100px; */
+      }
+
+      .menu {
+        display: none;
+      }
+
+      #click {
+        display: none;
+      }
+
+      .bar {
+        height: 2px;
+        width: 20px;
+        margin: 5px;
+        background-color: aliceblue;
+      }
+
+      @media (max-width: 940px) {
+        nav {
+          display: flex;
+          background: rgb(40, 40, 40);
+          height: 60px;
+
+          justify-content: space-between;
+          color: aliceblue;
+          /* border: 2px solid red; */
+          /* padding: 10px 40px; */
+        }
+
+        .ul {
+          display: block;
+          flex-direction: column;
+          background: rgb(40, 40, 40);
+          position: fixed;
+          top: 50px;
+          height: 100vh;
+          width: 100%;
+
+          margin: 0px;
+          right: -100%;
+
+          transition: 0.7s;
+        }
+
+        .menu {
+          display: block;
+        }
+
+        .bar {
+          height: 2px;
+          width: 20px;
+          margin: 3px;
+          background-color: rgb(255, 255, 255);
+        }
+
+        .li {
+          text-align: center;
+          margin: 30px 70px;
+
+          /* align-items: center; */
+        }
+
+        .check {
+          margin-left: 65%;
+        }
+
+        .logo {
+          margin-right: 0%;
+        }
+
+        #click:checked ~ .un .ul {
+          right: 0%;
+
+          /* transition: 0.7s; */
+        }
+
+        #click:checked ~ .check.menu :before {
+          content: "\f00d";
+        }
+      }
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+
+    <script>
+      //       document.oncontextmenu=e=>{return false}
+      // document.onkeydown =e =>{
+      //   if(e.key == "F12"){
+
+      //     return false
+      //   }
+
+      //   if(e.ctrlKey && e.key=="u") {return false}
+      // }
+      const firebaseConfig = {
+        apiKey: "AIzaSyD13AT05cO3QBTO_e7Qh00pPcVuzHQE2ak",
+        authDomain: "test2-5bbcd.firebaseapp.com",
+        projectId: "test2-5bbcd",
+        storageBucket: "test2-5bbcd.appspot.com",
+        messagingSenderId: "825583645874",
+        appId: "1:825583645874:web:e4b30f5090b5cefeb885ab",
+        measurementId: "G-B3HKML6191",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
+
+      function fetchData() {
+        const facultyId = document.getElementById("facultyId").value;
+
+        database
+          .ref("leaveApplications")
+          .orderByChild("facultyUniqueId")
+          .equalTo(facultyId)
+          .once("value")
+          .then((snapshot) => {
+            const data = snapshot.val();
+
+            if (data) {
+              const dataListContainer = document.getElementById("dataList");
+              dataListContainer.innerHTML = "";
+              const dataKeys = Object.keys(data);
+
+              for (let i = dataKeys.length - 1; i >= 0; i--) {
+                const dataId = dataKeys[i];
+                const leaveApplications = data[dataId];
+                const dataInfoDiv = document.createElement("div");
+                dataInfoDiv.classList.add("data-info");
+
+                const lowercaseStatus = leaveApplications.status.toLowerCase();
+
+                const statusDotClass =
+                  lowercaseStatus === "approved"
+                    ? "status-approved"
+                    : "status-pending";
+
+                dataInfoDiv.innerHTML = `
+        <p><strong>Faculty Name:</strong> ${leaveApplications.facultyName} | 
+        <strong>Faculty ID:</strong> ${leaveApplications.facultyUniqueId} | 
+        <strong>Start Leave Date:</strong> ${leaveApplications.startLeaveDate} | 
+        <div class="status-dot ${statusDotClass}"></div>
+        <button class="downloadButton" onclick="showHTMLContent('${leaveApplications.facultyName}', '${leaveApplications.facultyUniqueId}','${leaveApplications.startLeaveDate}', '${leaveApplications.endLeaveDate}', '${leaveApplications.leaveType}','${leaveApplications.reason}','${leaveApplications.status}')">Download</button></p>
+    `;
+
+                dataListContainer.appendChild(dataInfoDiv);
+              }
+            } else {
+              console.log("No data found for the given faculty ID.");
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
+      }
+
+      function showHTMLContent(
+        name,
+        id,
+        start,
+        end,
+        type,
+        reason,
+
+        status
+      ) {
+        localStorage.setItem("name", name);
+
+        localStorage.setItem("id", id);
+        localStorage.setItem("start", start);
+        localStorage.setItem("end", end);
+        // localStorage.setItem("dep", dep);
+
+        localStorage.setItem("type", type);
+
+        localStorage.setItem("reason", reason);
+
+        // localStorage.setItem("year", year);
+
+        let s = localStorage.setItem("status", status);
+
+        let get = localStorage.getItem("name");
+
+        window.location.href = "pdfformat.html";
+      }
+    </script>
+  </head>
+  <body>
+    <section>
+      <nav>
+        <div class="logo">LAMS</div>
+        <!-- <input type="text"> -->
+
+        <input type="checkbox" id="click" />
+
+        <label for="click" class="check">
+          <div class="menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </label>
+        <div class="un">
+          <div class="ul">
+            <div class="li">
+              <a href="index.html" style="text-decoration: none">home</a>
+            </div>
+            <div class="active li">
+              <a href="history.html" style="text-decoration: none">history</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </section>
+    <div class="content">
+      <h1>Retrieve Data</h1>
+      <label for="facultyId">Enter Faculty ID:</label>
+      <input type="text" id="facultyId" />
+      <button onclick="fetchData()">Retrieve Data</button>
+
+      <div id="dataList"></div>
+    </div>
+  </body>
+</html>

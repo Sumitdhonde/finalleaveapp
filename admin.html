@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leave Approval</title>
+    <style>
+      .content {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(to right, #8e44ad, #3498db);
+        color: #ffffff;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      body {
+        background: linear-gradient(to right, #8e44ad, #3498db);
+      }
+      .data-info {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #000000;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        border-radius: 20px;
+        width: 100%;
+      }
+
+      .data-info p {
+        margin: 0;
+        padding-right: 10px;
+      }
+
+      .data-info .buttons-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .data-info button {
+        background-color: #8e44ad;
+        color: #fff;
+        padding: 5px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-left: 5px;
+      }
+
+      .data-info button:hover {
+        background-color: #6c3483;
+      }
+
+      .data-info input {
+        margin-right: 10px;
+      }
+    </style>
+
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      nav {
+        display: flex;
+        background: rgb(40, 40, 40);
+        height: 60px;
+        align-items: center;
+        justify-content: space-between;
+        color: aliceblue;
+        /* border: 2px solid red; */
+        /* padding: 0px 50px 0px 100px; */
+      }
+
+      .logo {
+        padding-left: 3%;
+      }
+
+      .ul {
+        display: flex;
+
+        /* border: 2px solid red; */
+      }
+
+      .logo {
+        font-weight: 700;
+        /* border: 2px solid red; */
+      }
+
+      .li {
+        margin: 15px;
+        padding: 5px;
+        border-radius: 15px;
+
+        /* border: 2px solid red; */
+      }
+
+      a {
+        margin: 10px;
+        padding: 5px;
+        color: #8e44ad;
+
+        /* border: 2px solid red; */
+      }
+
+      .li:hover,
+      .active {
+        color: rgb(40, 40, 40);
+        background-color: aliceblue;
+        transition: 0.7s;
+
+        /* width: 100px; */
+      }
+
+      .menu {
+        display: none;
+      }
+
+      #click {
+        display: none;
+      }
+
+      .bar {
+        height: 2px;
+        width: 20px;
+        margin: 5px;
+        background-color: aliceblue;
+      }
+
+      @media (max-width: 940px) {
+        nav {
+          display: flex;
+          background: rgb(40, 40, 40);
+          height: 60px;
+
+          justify-content: space-between;
+          color: aliceblue;
+          /* border: 2px solid red; */
+          /* padding: 10px 40px; */
+        }
+
+        .ul {
+          display: block;
+          flex-direction: column;
+          background: rgb(40, 40, 40);
+          position: fixed;
+          top: 50px;
+          height: 100vh;
+          width: 100%;
+
+          margin: 0px;
+          right: -100%;
+
+          transition: 0.7s;
+        }
+
+        .menu {
+          display: block;
+        }
+
+        .bar {
+          height: 2px;
+          width: 20px;
+          margin: 3px;
+          background-color: rgb(255, 255, 255);
+        }
+
+        .li {
+          text-align: center;
+          margin: 30px 70px;
+
+          /* align-items: center; */
+        }
+
+        .check {
+          margin-left: 65%;
+        }
+
+        .logo {
+          margin-right: 0%;
+        }
+
+        #click:checked ~ .un .ul {
+          right: 0%;
+
+          /* transition: 0.7s; */
+        }
+
+        #click:checked ~ .check.menu :before {
+          content: "\f00d";
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <nav>
+        <div class="logo">LAMS</div>
+        <!-- <input type="text"> -->
+
+        <input type="checkbox" id="click" />
+
+        <label for="click" class="check">
+          <div class="menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </label>
+        <div class="un">
+          <div class="ul">
+            <div class="active li">
+              <a href="admin.html" style="text-decoration: none">admin</a>
+            </div>
+            <div class="li">
+              <a href="addemployee.html" style="text-decoration: none"
+                >add employee</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+    </section>
+    <div class="content">
+      <button class="navigate-btn" onclick="addemployee()">
+        add new employee
+      </button>
+
+      <h1>Leave Approval</h1>
+
+      <div id="dataList"></div>
+
+      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+
+      <script>
+        function addemployee() {
+          window.location.href = "addemployee.html";
+        }
+        // document.oncontextmenu = (e) => {
+        //   return false;
+        // };
+        // document.onkeydown = (e) => {
+        //   if (e.key == "F12") {
+        //     return false;
+        //   }
+
+        //   if (e.ctrlKey && e.key == "u") {
+        //     return false;
+        //   }
+        // };
+        // Your Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyD13AT05cO3QBTO_e7Qh00pPcVuzHQE2ak",
+          authDomain: "test2-5bbcd.firebaseapp.com",
+          projectId: "test2-5bbcd",
+          storageBucket: "test2-5bbcd.appspot.com",
+          messagingSenderId: "825583645874",
+          appId: "1:825583645874:web:e4b30f5090b5cefeb885ab",
+          measurementId: "G-B3HKML6191",
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        fetchAllData();
+
+        function fetchAllData() {
+          const dataListContainer = document.getElementById("dataList");
+
+          database.ref("leaveApplications").on("value", (snapshot) => {
+            const allData = snapshot.val();
+            if (allData) {
+              // Clear previous data
+              dataListContainer.innerHTML = "";
+
+              // Loop through data and display on the page
+              const allDataKeys = Object.keys(allData);
+              for (let i = allDataKeys.length - 1; i >= 0; i--) {
+                const dataId = allDataKeys[i];
+                const leaveApplications = allData[dataId];
+                const dataInfoDiv = document.createElement("div");
+                dataInfoDiv.classList.add("data-info");
+
+                // Display data information
+                dataInfoDiv.innerHTML = `
+      <p><strong>Faculty Name:</strong> ${leaveApplications.facultyName} |
+      <strong>Faculty ID:</strong> ${leaveApplications.facultyUniqueId} |
+      <strong>Start Leave Date:</strong> ${leaveApplications.startLeaveDate} |
+      <input type="checkbox" class="dataCheckbox" ${
+        leaveApplications.status === "Approved" ? "checked" : ""
+      } onchange="updateStatus('${dataId}', this.checked)"> |
+      <button class="deleteButton" onclick="deleteData('${dataId}')">Delete</button> |
+
+      <button class="downloadButton" onclick="showHTMLContent('${
+        leaveApplications.facultyName
+      }', '${leaveApplications.facultyUniqueId}','${
+                  leaveApplications.startLeaveDate
+                }', '${leaveApplications.endLeaveDate}', '${
+                  leaveApplications.leaveType
+                }','${leaveApplications.reason}','${
+                  leaveApplications.status
+                }')">Download</button></p>
+  `;
+
+                dataListContainer.appendChild(dataInfoDiv);
+              }
+            }
+          });
+        }
+
+        function updateStatus(key, newStatus) {
+          database
+            .ref("leaveApplications")
+            .child(key)
+            .update({ status: newStatus ? "Approved" : "Pending" });
+          console.log(
+            `Status updated to ${
+              newStatus ? "Approved" : "Pending"
+            } for data with key ${key}`
+          );
+        }
+
+        function deleteData(key) {
+          database.ref("leaveApplications").child(key).remove();
+          console.log(`Data with key ${key} deleted from Firebase!`);
+        }
+
+        function showHTMLContent(
+          name,
+          id,
+          start,
+          end,
+          // dep,
+          type,
+          reason,
+          // year,
+
+          status
+        ) {
+          localStorage.setItem("name", name);
+
+          localStorage.setItem("id", id);
+          localStorage.setItem("start", start);
+          localStorage.setItem("end", end);
+          // localStorage.setItem("dep", dep);
+
+          localStorage.setItem("type", type);
+
+          localStorage.setItem("reason", reason);
+
+          // localStorage.setItem("year", year);
+
+          let s = localStorage.setItem("status", status);
+
+          let get = localStorage.getItem("name");
+
+          window.location.href = "pdfformat.html";
+        }
+      </script>
+    </div>
+  </body>
+</html>

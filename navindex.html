@@ -1,0 +1,16 @@
+<div id="page1Content"></div>
+<div id="page2Content"></div>
+
+<script>
+  function loadPage(url, targetId) {
+    fetch(url)
+      .then((response) => response.text())
+      .then((html) => {
+        document.getElementById(targetId).innerHTML = html;
+      })
+      .catch((error) => console.error("Error loading page:", error));
+  }
+
+  loadPage("index.html", "page1Content");
+  loadPage("navbar.html", "page2Content");
+</script>

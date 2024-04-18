@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Employee</title>
+    <style>
+      .content {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="number"] {
+        padding: 8px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #8e44ad;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+    </style>
+
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      nav {
+        display: flex;
+        background: rgb(40, 40, 40);
+        height: 60px;
+        align-items: center;
+        justify-content: space-between;
+        color: aliceblue;
+        /* border: 2px solid red; */
+        /* padding: 0px 50px 0px 100px; */
+      }
+
+      .logo {
+        padding-left: 3%;
+      }
+
+      .ul {
+        display: flex;
+
+        /* border: 2px solid red; */
+      }
+
+      .logo {
+        font-weight: 700;
+        /* border: 2px solid red; */
+      }
+
+      .li {
+        margin: 15px;
+        padding: 5px;
+        border-radius: 15px;
+
+        /* border: 2px solid red; */
+      }
+
+      a {
+        margin: 10px;
+        padding: 5px;
+        color: #8e44ad;
+
+        /* border: 2px solid red; */
+      }
+
+      .li:hover,
+      .active {
+        color: rgb(40, 40, 40);
+        background-color: aliceblue;
+        transition: 0.7s;
+
+        /* width: 100px; */
+      }
+
+      .menu {
+        display: none;
+      }
+
+      #click {
+        display: none;
+      }
+
+      .bar {
+        height: 2px;
+        width: 20px;
+        margin: 5px;
+        background-color: aliceblue;
+      }
+
+      @media (max-width: 940px) {
+        nav {
+          display: flex;
+          background: rgb(40, 40, 40);
+          height: 60px;
+
+          justify-content: space-between;
+          color: aliceblue;
+          /* border: 2px solid red; */
+          /* padding: 10px 40px; */
+        }
+
+        .ul {
+          display: block;
+          flex-direction: column;
+          background: rgb(40, 40, 40);
+          position: fixed;
+          top: 50px;
+          height: 100vh;
+          width: 100%;
+
+          margin: 0px;
+          right: -100%;
+
+          transition: 0.7s;
+        }
+
+        .menu {
+          display: block;
+        }
+
+        .bar {
+          height: 2px;
+          width: 20px;
+          margin: 3px;
+          background-color: rgb(255, 255, 255);
+        }
+
+        .li {
+          text-align: center;
+          margin: 30px 70px;
+
+          /* align-items: center; */
+        }
+
+        .check {
+          margin-left: 65%;
+        }
+
+        .logo {
+          margin-right: 0%;
+        }
+
+        #click:checked ~ .un .ul {
+          right: 0%;
+
+          /* transition: 0.7s; */
+        }
+
+        #click:checked ~ .check.menu :before {
+          content: "\f00d";
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <nav>
+        <div class="logo">LAMS</div>
+        <!-- <input type="text"> -->
+
+        <input type="checkbox" id="click" />
+
+        <label for="click" class="check">
+          <div class="menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </label>
+        <div class="un">
+          <div class="ul">
+            <div class="li">
+              <a href="admin.html" style="text-decoration: none">admin</a>
+            </div>
+            <div class="active li">
+              <a href="addemployee.html" style="text-decoration: none"
+                >add employee</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+    </section>
+    <div class="conteiner">
+      <div class="container">
+        <h1>Create Employee</h1>
+        <form id="userForm">
+          <label for="facultyName">Faculty Name:</label>
+          <input type="text" id="facultyName" name="facultyName" required />
+
+          <label for="facultyUniqueId">Faculty Unique ID:</label>
+          <input
+            type="number"
+            id="facultyUniqueId"
+            name="facultyUniqueId"
+            required
+          />
+
+          <label for="employeeType">Employee Type:</label>
+          <input type="text" id="employeeType" name="employeeType" required />
+
+          <label for="medical">Medical Leave:</label>
+          <input type="number" id="medical" name="medical" required />
+
+          <label for="special">Special Leave:</label>
+          <input type="number" id="special" name="special" required />
+
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCdmIjedOZbqW5i2LOV6AjlX2zucM5xlAU",
+        authDomain: "leaveapp-staffdata.firebaseapp.com",
+        databaseURL: "https://leaveapp-staffdata-default-rtdb.firebaseio.com",
+        projectId: "leaveapp-staffdata",
+        storageBucket: "leaveapp-staffdata.appspot.com",
+        messagingSenderId: "599284701074",
+        appId: "1:599284701074:web:91d97a2ec132d501d4534b",
+        measurementId: "G-DZXJNRVLT0",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+      const leaveBalanceRef = firebase.database().ref("leaveBalance");
+
+      document
+        .getElementById("userForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const facultyName = document.getElementById("facultyName").value;
+          const facultyUniqueId =
+            document.getElementById("facultyUniqueId").value;
+          const employeeType = document.getElementById("employeeType").value;
+          const medical = parseInt(document.getElementById("medical").value);
+          const special = parseInt(document.getElementById("special").value);
+
+          leaveBalanceRef
+            .orderByChild("facultyUniqueId")
+            .equalTo(facultyUniqueId)
+            .once("value")
+            .then((snapshot) => {
+              if (snapshot.exists()) {
+                alert(
+                  "Faculty unique ID already exists. Please choose a different one."
+                );
+              } else {
+                const newUser = {
+                  facultyName: facultyName,
+                  facultyUniqueId: facultyUniqueId,
+                  employeeType: employeeType,
+                  medical: medical,
+                  special: special,
+                };
+
+                leaveBalanceRef
+                  .push(newUser)
+                  .then(function () {
+                    alert("User created successfully!");
+                    document.getElementById("userForm").reset();
+                  })
+                  .catch(function (error) {
+                    console.error("Error adding user: ", error);
+                    alert("An error occurred. Please try again.");
+                  });
+              }
+            })
+            .catch((error) => {
+              console.error("Error checking faculty unique ID: ", error);
+              alert("An error occurred. Please try again.");
+            });
+        });
+    </script>
+  </body>
+</html>
