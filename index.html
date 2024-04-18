@@ -6,254 +6,626 @@
     <title>Leave Application Form</title>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <style>
-      body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(to right, #8e44ad, #3498db);
-      color: #ffffff;
-    }
+        /* nav bar start */
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+          }
 
-    .formstart {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(to right, #8e44ad, #3498db);
-      color: #ffffff;
-      margin-top: 100px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+          nav {
+            display: flex;
+            background: rgb(97, 96, 96);
+            height: 60px;
+            align-items: center;
+            justify-content: space-between;
+            color: rgb(0, 0, 0);
+            /* border: 2px solid red; */
+            /* padding: 0px 50px 0px 100px; */
 
-    .last {
-      font-family: 'Arial', sans-serif;
-      /* background: linear-gradient(to right, #8e44ad, #3498db); */
-      color: #ffffff;
-      margin-top: 100px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-    }
+          }
 
-    form {
-      width: 100%;
-      max-width: 600px;
-      background-color: #1f1f1f;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-      margin-bottom: 20px;
-    }
+          .logo {
+            padding-left: 3%;
+          }
 
-    label {
-      display: block;
-      margin-bottom: 8px;
-    }
+          ul {
+            display: flex;
+            /* border: 2px solid red; */
+          }
 
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 16px;
-      border: 1px solid #444;
-      border-radius: 5px;
-      background-color: #333;
-      color: #fff;
-    }
+          .logo {
+            font-weight: 700;
+            /* border: 2px solid red; */
+          }
 
-    .switch {
-      display: none;
-    }
+          li {
+            margin: 15px;
+            padding: 5px;
+            border-radius: 15px;
 
-    button {
-      background-color: #8e44ad;
-      color: #fff;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+            /* border: 2px solid red; */
+          }
 
-    button:hover {
-      background-color: #6c3483;
-    }
+          a {
+            margin: 10px;
+            padding: 5px;
 
-    /* .navigate-btn {
-      align-self: flex-end;
-    } */
+            /* border: 2px solid red; */
+          }
 
-    .navigate-btn2 ,.navigate-btn {
-      margin: 40px;
-      background-color: black;
-    }
+          li:hover,
+          .active {
+             color: rgb(0, 0, 0); 
+            background-color: rgb(255, 255, 255); 
+            transition: 0.7s;
+
+
+            /* width: 100px; */
+
+          }
+
+          .menu {
+            display: none;
+
+          }
+
+          #click {
+            display: none;
+          }
+
+          .bar {
+            height: 2px;
+            width: 20px;
+            margin: 5px;
+            background-color: rgb(0, 0, 0);
+          }
+
+          @media (max-width: 940px) {
+            nav {
+              display: flex;
+              background: rgb(0, 0, 0);
+              height: 60px;
+
+              justify-content: space-between;
+              color: rgb(224, 224, 224);
+              /* border: 2px solid red; */
+              /* padding: 10px 40px; */
+
+            }
+
+            ul {
+              display: block;
+              flex-direction: column;
+              background: rgb(0, 0, 0);
+              position: fixed;
+              top: 50px;
+              height: 100vh;
+              width: 100%;
+
+              margin: 0px;
+              right: -100%;
+
+
+              transition: 0.7s;
+
+
+            }
+
+            .menu {
+              display: block;
+
+
+            }
+
+
+            .bar {
+              height: 2px;
+              width: 20px;
+              margin: 3px;
+              background-color: rgb(0, 0, 0);
+
+            }
+
+            li {
+
+              text-align: center;
+              margin: 30px 70px;
+
+              /* align-items: center; */
+
+            }
+
+            .check {
+
+
+              margin-left: 65%;
+
+
+
+
+            }
+
+            .logo {
+
+
+              margin-right: 0%;
+
+
+
+
+            }
+
+
+
+             #click:checked~.un ul {
+              right: 0%;
+
+
+
+              /* transition: 0.7s;*/
+          
+            }
+              
+
+            
+
+             #click:checked~.check.menu :before {
+
+              content: "\f00d";
+            } 
+
+          
+
+
+          } 
+
+        /* nav bar end */
+
+        .upperheader {
+          display: flex;
+          column-gap: 30px;
+        }
+        
+         .header {
+          position: relative;
+            margin-top: 30px;
+              display: block;
+              /* text-align: center; */
+              color: #000000d8;
+              font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+              font-size: large;
+              margin-left: 20px;
+        }
+
+        .subheading{
+          position: relative;
+            margin-top: 1px;
+              display: block;
+              /* text-align: center; */
+              color: #00000071;
+              font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+        } 
+
+        body {
+          font-family: 'Arial', sans-serif;
+          /* background: #fffefec9; */
+          color: #ffffff;
+        }
+
+        .formstart {
+          font-family: 'Arial', sans-serif;
+          /* background: linear-gradient(to right, #8e44ad, #3498db); */
+          color: #ffffff;
+          display: flex;
+          /* flex-direction: column; */
+          justify-content: center;
+          align-items: center;
+
+          margin: 30px auto;
+          background: transparent;
+          /* box-shadow: 0px 8px 28px -9px rgba(0,0,0,0.45); */
+          position: relative;
+          width: 1000px;
+          height: 800px;
+          border-radius: 16px;
+          overflow: hidden;
+        }
+
+        /* anushka */
+
+            .wave {
+              z-index: -10;
+                position: absolute;
+                width: 1400px;
+                height: 1800px;
+                opacity: 0.6;
+                left: 0;
+                top: 0;
+                margin-left: -50%;
+                margin-top: -70%;
+                background: linear-gradient(#af40ff,#5b42f3 20%,#00ddeb);
+            }
+            
+            .infotop {
+                text-align: center;
+                font-size: 16px;
+                position: absolute;
+                top: 5.6em;
+                left: 0;
+                right: 0;
+                color: rgb(255, 255, 255);
+                font-weight: 600;
+            }
+            
+            .name {
+                font-size: 14px;
+                font-weight: 100;
+                position: relative;
+                top: 1em;
+                text-transform: lowercase;
+            }
+            
+            .wave:nth-child(2),
+            .wave:nth-child(3) {
+                top: 210px;
+            }
+            
+            .playing .wave {
+                border-radius: 40%;
+                animation: wave 3000ms infinite linear;
+            }
+            
+            .wave {
+                border-radius: 40%;
+                animation: wave 55s infinite linear;
+            }
+            
+            .playing .wave:nth-child(2) {
+                animation-duration: 4000ms;
+            }
+            
+            .wave:nth-child(2) {
+                animation-duration: 50s;
+            }
+            
+            .playing .wave:nth-child(3) {
+                animation-duration: 5000ms;
+            }
+            
+            .wave:nth-child(3) {
+                animation-duration: 45s;
+            }
+            
+            @keyframes wave {
+                0% {
+                transform: rotate(0deg);
+                }
+            
+                100% {
+                transform: rotate(360deg);
+                }
+            } 
+
+        .last {
+          font-family: 'Arial', sans-serif;
+          /* background: linear-gradient(to right, #8e44ad, #3498db); */
+          color: #fffdfd;
+          margin-top: 100px;
+          margin-bottom: 50px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+          .leave
+          {
+            position: relative;
+            margin: auto;
+              display: block;
+              text-align: center;
+          }
+
+            form {
+              width: 100%;
+              max-width: 600px;
+              /* background-color: #1f1f1f1e; */
+              padding: 40px;
+              border-radius: 10px;
+              /* box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); */
+              margin-bottom: 20px;
+            }
+
+            label {
+              display: block;
+              margin-bottom: 8px;
+            }
+
+            input, select {
+              width: 100%;
+              padding: 10px;
+              margin-bottom: 16px;
+              border: 2px solid #444;
+              border-radius: 5px;
+              background-color: #00000000;
+              color: #fff;
+            }
+
+            .switch {
+              display: none;
+            }
+
+            button {
+              background-color: #E19BDA;
+              color: #000000;
+              padding: 10px;
+              width: 150px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              position: relative;
+              margin: auto;
+              display: block;
+              margin-top:50px;
+            
+            }
+
+            button:hover {
+              background-color: #c7c5c7;
+            }
+
+            /* .navigate-btn {
+              align-self: flex-end;
+            } */
+
+            .navigate-btn2 ,.navigate-btn {
+              margin: 40px;
+              background-color: black;
+            }
+
+            footer {
+            background-color: #f2f2f2;
+           padding: 10px;
+           text-align: center;
+           position: fixed;
+           left: 0;
+            bottom: 0;
+            width: 100%;
+            }
+
+              footer p {  
+             margin: 0;
+            } 
+
       </style>
 
+
+
 <style>
-  * {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-  }
-
-  nav {
-    display: flex;
-    background: rgb(40, 40, 40);
-    height: 60px;
-    align-items: center;
-    justify-content: space-between;
-    color: aliceblue;
-    /* border: 2px solid red; */
-    /* padding: 0px 50px 0px 100px; */
-  }
-
-  .logo {
-    padding-left: 3%;
-  }
-
-  .ul {
-    display: flex;
-
-    /* border: 2px solid red; */
-  }
-
-  .logo {
-    font-weight: 700;
-    /* border: 2px solid red; */
-  }
-
-  .li {
-    margin: 15px;
-    padding: 5px;
-    border-radius: 15px;
-
-
-    /* border: 2px solid red; */
-  }
-
-  a {
-    margin: 10px;
-    padding: 5px;
-    color: #8e44ad;
-
-    /* border: 2px solid red; */
-  }
-
-
-  .li:hover,
-  .active  {
-    color: rgb(40, 40, 40);
-    background-color: aliceblue;
-    transition: 0.7s;
-
-    /* width: 100px; */
-  }
-
-  .menu {
-    display: none;
-  }
-
-  #click {
-    display: none;
-  }
-
-  .bar {
-    height: 2px;
-    width: 20px;
-    margin: 5px;
-    background-color: aliceblue;
-  }
-
-  @media (max-width: 940px) {
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+  
     nav {
       display: flex;
       background: rgb(40, 40, 40);
       height: 60px;
-
+      align-items: center;
       justify-content: space-between;
       color: aliceblue;
       /* border: 2px solid red; */
-      /* padding: 10px 40px; */
+      /* padding: 0px 50px 0px 100px; */
     }
-
+  
+    .logo {
+      padding-left: 3%;
+    }
+  
     .ul {
-      display: block;
-      flex-direction: column;
-      background: rgb(40, 40, 40);
-      position: fixed;
-      top: 50px;
-      height: 100vh;
-      width: 100%;
-
-      margin: 0px;
-      right: -100%;
-
+      display: flex;
+  
+      /* border: 2px solid red; */
+    }
+  
+    .logo {
+      font-weight: 700;
+      /* border: 2px solid red; */
+    }
+  
+    .li {
+      margin: 15px;
+      padding: 5px;
+      border-radius: 15px;
+  
+  
+      /* border: 2px solid red; */
+    }
+  
+    a {
+      margin: 10px;
+      padding: 5px;
+      color: #8e44ad;
+  
+      /* border: 2px solid red; */
+    }
+  
+  
+    .li:hover,
+    .active  {
+      color: rgb(40, 40, 40);
+      background-color: aliceblue;
       transition: 0.7s;
+  
+      /* width: 100px; */
     }
-
+  
     .menu {
-      display: block;
+      display: none;
     }
-
+  
+    #click {
+      display: none;
+    }
+  
     .bar {
       height: 2px;
       width: 20px;
-      margin: 3px;
-      background-color: rgb(255, 255, 255);
+      margin: 5px;
+      background-color: aliceblue;
     }
-
-    .li {
-      text-align: center;
-      margin: 30px 70px;
-
-      /* align-items: center; */
+  
+    @media (max-width: 940px) {
+      nav {
+        display: flex;
+        background: rgb(40, 40, 40);
+        height: 60px;
+  
+        justify-content: space-between;
+        color: aliceblue;
+        /* border: 2px solid red; */
+        /* padding: 10px 40px; */
+      }
+  
+      .ul {
+        display: block;
+        flex-direction: column;
+        background: rgb(40, 40, 40);
+        position: fixed;
+        top: 50px;
+        height: 100vh;
+        width: 100%;
+  
+        margin: 0px;
+        right: -100%;
+  
+        transition: 0.7s;
+      }
+  
+      .menu {
+        display: block;
+      }
+  
+      .bar {
+        height: 2px;
+        width: 20px;
+        margin: 3px;
+        background-color: rgb(255, 255, 255);
+      }
+  
+      .li {
+        text-align: center;
+        margin: 30px 70px;
+  
+        /* align-items: center; */
+      }
+  
+      .check {
+        margin-left: 65%;
+      }
+  
+      .logo {
+        margin-right: 0%;
+      }
+  
+      #click:checked ~ .un .ul {
+        right: 0%;
+  
+        /* transition: 0.7s; */
+      }
+  
+      #click:checked ~ .check.menu :before {
+        content: "\f00d";
+      }
     }
-
-    .check {
-      margin-left: 65%;
-    }
-
-    .logo {
-      margin-right: 0%;
-    }
-
-    #click:checked ~ .un .ul {
-      right: 0%;
-
-      /* transition: 0.7s; */
-    }
-
-    #click:checked ~ .check.menu :before {
-      content: "\f00d";
-    }
-  }
-</style>
+  </style>
   </head>
   <body>
+
     <section>
-      <nav>
-        <div class="logo">LAMS</div>
-        <!-- <input type="text"> -->
-
-        <input type="checkbox" id="click" />
-
-        <label for="click" class="check">
-          <div class="menu">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+        <nav>
+          <div class="logo">LAMS</div>
+          <!-- <input type="text"> -->
+  
+          <input type="checkbox" id="click" />
+  
+          <label for="click" class="check">
+            <div class="menu">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </div>
+          </label>
+          <div class="un">
+            <div class="ul">
+              <div class="active li" ><a href="#" style="text-decoration: none">home</a></div>
+              <div class="li"><a href="history.html" style="text-decoration: none" >history</a></div>
+              <div class="li"><a href="admin.html" style="text-decoration: none" >admin</a></div>
+            </div>
+            </div>
           </div>
-        </label>
-        <div class="un">
-          <div class="ul">
-            <div class="active li" ><a href="#" style="text-decoration: none">home</a></div>
-            <div class="li"><a href="history.html" style="text-decoration: none" >history</a></div>
-        
-          </div>
+        </nav>
+      </section>
+
+    <!-- <div class="header">
+    <h1>
+      Want to Apply for the Leave 
+    </h1>
+          <script src="https://cdn.lordicon.com/lordicon.js"></script>
+      <lord-icon
+          src="https://cdn.lordicon.com/nqisoomz.json"
+          trigger="hover"
+          style="width:250px;height:250px">
+      </lord-icon>
+    <div class="subheading">
+      Submit leave applications electronically for faster processing. Applications are routed directly to the Head of Department (HOD) for efficient approval. Track the status of your leave requests in real-time. Save time and reduce paperwork with our user-friendly system.
+    </h4>
+    </div>
+   </div> -->
+
+   <div>
+      <!-- <div class="upperheader">
+        <div class="header">
+          <h1>
+            Want to Apply for the Leave 
+          </h1>
+          <div class="subheading">
+            Submit leave applications electronically for faster processing. Applications are routed directly to the Head of Department (HOD) for efficient approval. Track the status of your leave requests in real-time. Save time and reduce paperwork with our user-friendly system.
+          </h4>
         </div>
-      </nav>
-    </section>
-   <h1 class="last" style="color: #fff;">FORM FOR LEAVE APPLICATION</h1> 
+        
+        </div>
+        <div>
+           <script src="https://cdn.lordicon.com/lordicon.js"></script>
+          <lord-icon
+              src="https://cdn.lordicon.com/nqisoomz.json"
+              trigger="hover"
+              style="width:200px;height:200px"> 
+            
+          </lord-icon>
+          
+        </div>  
+      </div> -->
+    <div>
+
+    </div>
+   </div>
 
     <div class="formstart">
       <form id="leaveForm">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+
+      <div class="leave">
+        <h1>
+          Leave Application Form
+        </h1>
+
+      </div>
+            
         <label for="facultyName">Faculty Name:</label>
         <input type="text" id="facultyName" name="facultyName" required />
 
@@ -292,8 +664,8 @@
 
         <label for="leaveType">Type of Leave:</label>
         <select id="leaveType" name="leaveType">
-          <option value="medical">Medical</option>
-          <option value="personal">Personal</option>
+          <option value="medical">Sick leave</option>
+          <option value="personal">Vacation leave</option>
         </select>
 
 
@@ -309,41 +681,31 @@
           <span class="slider"></span>
         <!-- </label> -->
 
-        <button type="submit">Submit</button>
+        <button type="submit">
+          Submit
+          <!-- <script src="https://cdn.lordicon.com/lordicon.js"></script>
+          <lord-icon
+              src="https://cdn.lordicon.com/nqisoomz.json"
+              trigger="hover"
+              style="width:30px;height:30px">  -->
+            
+          </lord-icon>
+        </button>
       </form>
 
 
     
 
 
-      <div id="dataList"></div>
-
-<div class="last">
-
-  <!-- <button class="navigate-btn" onclick="history()">see history</button> -->
-
-      <button class="navigate-btn2" onclick="navigateToLeaveApproval()">Leave Approval Page</button>
-
-
-
-    </div>
-
-    </div>
+   
 
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
   
     <script>
-//       document.oncontextmenu=e=>{return false}
-// document.onkeydown =e =>{
-//   if(e.key == "F12"){
-
-//     return false
-//   }
-
-//   if(e.ctrlKey && e.key=="u") {return false}
-// }
+       
+   
       var today = new Date().toISOString().split('T')[0];
   
       var endDate = document.getElementById("endLeaveDate");
@@ -356,6 +718,7 @@
 
       startDate.addEventListener("change", function() {
             endDate.setAttribute("min", this.value);
+            // endDate.value = "";
         });
 
         endDate.addEventListener("change", function() {
@@ -363,6 +726,7 @@
         });
   
 
+// console.log(typeof leaveType)
   
       const firebaseConfig1 = {
           apiKey: "AIzaSyCdmIjedOZbqW5i2LOV6AjlX2zucM5xlAU",
@@ -384,6 +748,7 @@
           measurementId: "G-B3HKML6191"
       };
   
+      // Initialize Firebase app instances for each database
       const app1 = firebase.initializeApp(firebaseConfig1, "app1");
       const database1 = app1.database();
   
@@ -391,11 +756,15 @@
       const database2 = app2.database();
   
       function navigateToLeaveApproval() {
-          window.location.href = 'admin.html';
+          window.location.href = 'leave management.html';
       }
   
       function history() {
-          window.location.href = 'history.html';
+          window.location.href = 'history page.html';
+      }
+
+      function aboutus() {
+          window.location.href = 'aboutus.html';
       }
 
       let remainingLeaves = 100;
@@ -415,16 +784,19 @@
         let actualdiff = calD(startDateF, endDateF);
 
         
+  //     var endDate = document.getElementById("endLeaveDate");
+  
+  // var startDate = document.getElementById("startLeaveDate");
+//  var curr = startDate.setAttribute("min", today);
 
+  // endDate.setAttribute("min", curr);
 
         const facultyId = document.getElementById("facultyUniqueId").value;
         const dataRef = database1.ref("leaveBalance");
 
         try {
-            const snapshot = await dataRef.orderByChild("facultyUniqueId").equalTo(facultyId).once("value");
+            const snapshot = await dataRef.orderByChild("facultyUniqueId").equalTo(parseInt(facultyId)).once("value");
             const data = snapshot.val();
-
-            console.log(data)
 
             if (data) {
                 Object.keys(data).forEach((dataId) => {
@@ -437,7 +809,7 @@
 
                     if (remainingLeaves >= 1) {
                         updateStatus(dataId, remainingLeaves, leaveType);
-                    
+                        // console.log("Updated status successfully:", remainingLeaves);
                         addDataInDb();
 
                     } else {
@@ -466,7 +838,7 @@
         }
     }
 
-    function calD(startDateFf, endDateFf) { 
+    function calD(startDateFf, endDateFf) { //dateDiff
         let calStart = new Date(startDateFf)
         let calEnd = new Date(endDateFf)
         let dateDiff = ((calEnd - calStart) / (1000 * 60 * 60 * 24)) + 1
@@ -482,10 +854,14 @@
         let formData = {
             facultyName: document.getElementById("facultyName").value,
             facultyUniqueId: document.getElementById("facultyUniqueId").value,
+            // department: document.getElementById("department").value,
+            // year: document.getElementById("year").value,
+            // subjectName: document.getElementById("subjectName").value,
             startLeaveDate: document.getElementById("startLeaveDate").value,
             endLeaveDate: document.getElementById("endLeaveDate").value,
             leaveType: document.getElementById("leaveType").value,
             reason: document.getElementById("reason").value,
+            // otherInfo: document.getElementById("otherInfo").value,
             status: document.getElementById("approvalSwitch").checked ? "Approved" : "Pending",
         };
 
@@ -493,6 +869,7 @@
         let calEndPush = new Date(formData.endLeaveDate)
         let dateDiffPush = ((calEndPush - calStartPush) / (1000 * 60 * 60 * 24)) + 1
 
+        // Fetch the existing leave balance from the first database
       
 
         database2.ref("leaveApplications").push(formData)
@@ -504,16 +881,20 @@
                     console.error("Error submitting form data:", error);
                 });
 
+            // Clear the form fields
             adminUrl = "https://sumitdhonde.github.io/leave-app/admin.html"
             sendEmail(formData.facultyName , adminUrl ,formData.startLeaveDate,formData.endLeaveDate ,dateDiffPush, formData.leaveType ,formData.reason);
 
             clearFormFields();
-            alert("Leave application submitted successfully !  \n wait for approval...")
+            alert("Leave application submitted successfully !  \n wait for approval...  " )
     }
 
 
     function sendEmail(name,adminUrl , start, end ,dateDiffPush , leavetypeEmail , reason) {
-     
+        // Get the email address from the input field
+        // const email = document.getElementById("email").value;
+
+        // Send email using SMTP.js
         Email.send({
           Host: "smtp.elasticemail.com",
           Username: "leaveapptest@outlook.com",
@@ -531,13 +912,18 @@
       function clearFormFields() {
           document.getElementById("facultyName").value = "";
           document.getElementById("facultyUniqueId").value = "";
+          // document.getElementById("department").value = "";
+          // document.getElementById("year").value = "";
+          // document.getElementById("subjectName").value = "";
           document.getElementById("startLeaveDate").value = "";
           document.getElementById("endLeaveDate").value = "";
           document.getElementById("leaveType").value = "";
           document.getElementById("reason").value = "";
+          // document.getElementById("otherInfo").value = "";
           document.getElementById("approvalSwitch").checked = false;
       }
   </script>
+
   
     
 
